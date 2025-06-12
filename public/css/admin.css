@@ -1,0 +1,56 @@
+body {
+  font-family: "Segoe UI", sans-serif;
+}
+
+.table-container {
+  max-width: 1300px;
+  margin: auto;
+  margin-top: 50px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 2px solid #1f79db;
+}
+
+.table thead tr th {
+  background-color: #1f79db;
+  color: white;
+  text-align: center;
+  font-size: 1.2rem;
+  padding: 16px;
+}
+
+.table td {
+  vertical-align: middle;
+  text-align: center;
+  font-size: 1.1rem;
+  padding: 16px;
+}
+
+.btn-rounded {
+  border-radius: 20px;
+}
+
+.btn-info {
+  background-color: #1f79db;
+  border: none;
+}
+
+.btn-info:hover {
+  background-color: #165fb1;
+}
+
+.btn-hapus {
+  background-color: #e53935;
+  color: white;
+  border: none;
+}
+
+.btn-hapus:hover {
+  background-color: #d32f2f;
+}
+
+.logo-container {
+  margin-left: 2rem;
+  margin-top: 2rem;
+}

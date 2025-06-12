@@ -1,0 +1,83 @@
+body {
+  background-color: white;
+  font-size: 1.25rem;
+}
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.input-box {
+  position: relative;
+  width: 100%;
+  height: 60px;
+  margin-bottom: 40px;
+}
+
+.input-box input {
+  width: 100%;
+  height: 100%;
+  padding: 0 15px 0 45px;
+  background: transparent;
+  border: 1px solid #000000;
+  border-radius: 0.6rem;
+  font-size: 1.2rem;
+  color: #000;
+  outline: none;
+}
+
+.input-box label {
+  position: absolute;
+  top: 50%;
+  left: 45px;
+  transform: translateY(-50%);
+  color: #000;
+  font-size: 1rem;
+  pointer-events: none;
+  transition: 0.3s ease;
+}
+
+.input-box input:focus ~ label,
+.input-box input:valid ~ label {
+  top: -12px;
+  left: 15px;
+  font-size: 0.85rem;
+  background-color: white;
+  padding: 0 5px;
+}
+
+.input-box .icon {
+  position: absolute;
+  top: 16px;
+  left: 15px;
+  font-size: 1.2rem;
+  color: #000;
+}
+
+.btn-primary {
+  background-color: #159eeb;
+  border: none;
+  padding: 1rem;
+  font-weight: bold;
+  font-size: 1.25rem;
+  border-radius: 1rem;
+}
+
+.btn-primary:active {
+  background-color: #1f79db;
+}
+
+a {
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.custom-link span {
+  color: #a73bc3;
+}
