@@ -30,18 +30,32 @@
         style="width: 150px"
       />
 
-      <form action="#">
+      <!-- The form is updated to submit to the 'login' route using the POST method -->
+      <form action="{{ route('login') }}" method="POST">
+        <!-- @csrf is a security token required by Laravel. Forms won't work without it. -->
+        @csrf
+
+        <!-- This block will display validation errors from the LoginController -->
+        @if ($errors->any())
+        <div class="alert alert-danger text-start" role="alert">
+            {{ $errors->first() }}
+        </div>
+        @endif
+
         <!-- Email -->
         <div class="input-box">
           <span class="icon"><i class="bi bi-envelope"></i></span>
-          <input type="email" id="email" required />
+          <!-- The 'name' attribute is crucial. It's how Laravel gets the form data. -->
+          <!-- 'value="{{ old('email') }}"' keeps the email field filled if validation fails. -->
+          <input type="email" id="email" name="email" value="{{ old('email') }}" required />
           <label for="email">Masukkan Email</label>
         </div>
 
         <!-- Password -->
         <div class="input-box position-relative">
           <span class="icon"><i class="bi bi-lock-fill"></i></span>
-          <input type="password" id="password" required />
+          <!-- Added the 'name' attribute for the password field -->
+          <input type="password" id="password" name="password" required />
           <label for="password">Masukkan Password</label>
           <span
             class="position-absolute top-50 end-0 translate-middle-y me-3"
