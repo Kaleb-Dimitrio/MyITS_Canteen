@@ -51,7 +51,7 @@ class LoginController extends Controller
         if ($customer && Hash::check($credentials['password'], $customer->customer_password)) {
             Auth::guard('web')->login($customer);
             $request->session()->regenerate();
-            return redirect()->intended('/daftar');
+            return redirect()->intended('/customer');
         }
 
         // 5. If all attempts fail, redirect back with an error message
