@@ -49,7 +49,7 @@ class LoginController extends Controller
         // 4. Attempt to log in as a Customer (default guard)
         $customer = \App\Models\Customer::where('customer_email', $credentials['email'])->first();
         if ($customer && Hash::check($credentials['password'], $customer->customer_password)) {
-            Auth::guard('web')->login($customer);
+            Auth::guard('customer')->login($customer);
             $request->session()->regenerate();
             return redirect()->intended('/customer');
         }
@@ -66,7 +66,7 @@ class LoginController extends Controller
     public function logout(Request $request)
     {
         // Log out from all guards to be safe
-        Auth::guard('web')->logout();
+        Auth::guard('customer')->logout();
         Auth::guard('admin')->logout();
         Auth::guard('cashier')->logout();
 

@@ -4,19 +4,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-
-// --- PUBLIC ROUTES ---
-// These routes are accessible to everyone, including guests.
 
 // The root URL of your website will show the login form.
 Route::get('/', [LoginController::class, 'showLoginForm'])->name('login-page');
@@ -40,6 +27,11 @@ Route::middleware(['auth:admin'])->prefix('admin')->group(function () {
         return view('admin');
     })->name('admin.dashboard');
 
+    // New route for editing admin-related content
+    Route::get('/edit', function () {
+        return view('admin_edit');
+    })->name('admin.edit');
+
     // Add other admin-only routes here.
 });
 
@@ -60,21 +52,25 @@ Route::middleware(['auth:cashier'])->prefix('cashier')->group(function () {
     Route::get('/edit', function () {
         return view('cashier_edit');
     })->name('cashier.edit');
-
-    // Add other cashier-only routes here.
 });
 
 
 // --- PROTECTED CUSTOMER ROUTES ---
 // This section is now updated to use the '/customer' prefix.
-Route::middleware(['auth:web'])->prefix('customer')->group(function () {
-    // 'auth:web' uses the default guard, which we configured for customers.
+Route::middleware(['auth:customer'])->prefix('customer')->group(function () {
 
     Route::get('/', function() {
-        // This now correctly points to your customer.blade.php file
-        // and is accessible at yoursite.com/customer
         return view('customer');
     })->name('customer.dashboard');
 
-    // You can add other customer-only routes here, e.g., /profile, /my-orders
+    // New route for the customer's menu page
+    Route::get('/menu', function() {
+        return view('customer_menu');
+    })->name('customer.menu');
+
+    // New route for the customer's order page
+    Route::get('/order', function() {
+        return view('customer_order');
+    })->name('customer.order');
+
 });

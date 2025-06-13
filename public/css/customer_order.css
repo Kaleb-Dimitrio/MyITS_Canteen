@@ -1,0 +1,85 @@
+body {
+    background-color: #ffffff;
+}
+
+.wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    padding: 2rem;
+    justify-content: center;
+}
+
+.produk-table {
+    flex: 3;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.produk-table table thead {
+    background-color: #159eeb;
+    color: white;
+}
+
+.produk-table table img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.produk-table th,
+.produk-table td {
+    vertical-align: middle;
+    text-align: center;
+    font-size: 1.2rem;
+    padding: 16px 12px;
+}
+
+.produk-table td.text-start {
+    text-align: left !important;
+}
+
+.quantity {
+    background-color: #f7f7f7;
+    border: 1px solid #ccc;
+    border-radius: 999px;
+    padding: 5px 15px;
+    display: inline-block;
+    min-width: 40px;
+}
+
+.detail-table {
+    flex: 1.5;
+    background-color: #2f80ed;
+    color: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    min-width: 300px;
+    height: fit-content;
+}
+
+.detail-table .box {
+    background-color: white;
+    color: black;
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin-top: 1rem;
+}
+
+.back-button {
+    background-color: #1f79db;
+    color: white;
+    font-weight: bold;
+    padding: 12px;
+    border: none;
+    width: 100%;
+    border-radius: 0 0 10px 10px;
+    margin-top: 1rem;
+}
+
+.back-button:hover {
+    background-color: #165fb1;
+}

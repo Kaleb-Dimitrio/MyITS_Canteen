@@ -40,7 +40,7 @@ class RegisterController extends Controller
         ]);
 
         // 3. Log the new customer in automatically
-        Auth::guard('web')->login($customer);
+        Auth::guard('customer')->login($customer);
 
         // 4. Redirect them to their home page
         return redirect('/customer'); // Or wherever you want new customers to go

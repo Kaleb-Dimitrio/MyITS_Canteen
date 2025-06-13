@@ -14,7 +14,7 @@ return new class extends Migration
         // Corresponds to the 'Admin' table in your PDM
         Schema::create('admin', function (Blueprint $table) {
             $table->id('admin_id'); // PDM: Admin_ID (PK)
-            $table->string('admin_nama', 20); // PDM: Admin_Nama
+            $table->string('admin_nama'); // PDM: Admin_Nama
             $table->string('admin_email', 255)->unique(); // PDM: Admin_Email
             $table->string('admin_password'); // PDM: Admin_Password
             $table->timestamps(); // Standard Laravel practice
