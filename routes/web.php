@@ -3,10 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\AdminEditController;
+use App\Http\Controllers\AdminTokoController;
 use App\Http\Controllers\CustomerDashboardController;
-
-
-
 use App\Http\Controllers\OrderController;
 
 Route::post('/customer/order/store', [OrderController::class, 'store'])->name('customer.order.store');
@@ -29,9 +28,10 @@ Route::post('/daftar', [RegisterController::class, 'register']);
 Route::middleware(['auth:admin'])->prefix('admin')->group(function () {
     Route::get('/', [App\Http\Controllers\AdminTokoController::class, 'index'])->name('admin.dashboard');
 
-    Route::get('/edit', function () {
-        return view('admin_edit');
-    })->name('admin.edit');
+    Route::get('/toko/edit', [AdminEditController::class, 'showForm'])->name('admin.edit');
+
+    // Route to handle the form submission
+    Route::post('/toko/store', [AdminEditController::class, 'storeOrUpdate'])->name('admin.toko.store');
 
     Route::get('/toko/{id}', function($id) {
         return "Detail Toko ID: " . $id;
