@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id('order_id'); // PDM: Order_ID (PK)
             $table->timestamp('order_tanggal')->useCurrent(); // PDM: Order_Tanggal
             $table->string('order_total_harga', 20); // PDM: Order_TotalHarga
-            $table->string('order_status_pesanan', 20); // PDM: Order_StatusPesana (Typo corrected)
+            $table->string('order_status_pesanan', 50); // PDM: Order_StatusPesana (Typo corrected)
             $table->integer('order_no_meja'); // PDM: Order_NoMeja
             $table->boolean('order_status_pembayaran')->default(false); // PDM: Order_StatusPembay (Typo corrected)
             

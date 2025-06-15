@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\AdminEditController;
+use App\Http\Controllers\AdminTokoController;
 use App\Http\Controllers\CustomerDashboardController;
 use App\Http\Controllers\CashierDashboardController;
 use App\Http\Controllers\OrderController;
