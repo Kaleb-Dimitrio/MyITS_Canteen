@@ -17,7 +17,7 @@ class CashierFactory extends Factory
             'cashier_email' => $this->faker->unique()->safeEmail(),
             'cashier_no_telp' => $this->faker->phoneNumber(),
             'cashier_password' => Hash::make('password'),
-            'toko_id' => Toko::inRandomOrder()->first()->toko_id,
+            'toko_id' => Toko::factory(),
         ];
     }
 }
