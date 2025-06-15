@@ -4,9 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\CustomerDashboardController;
-
-
-
+use App\Http\Controllers\CashierDashboardController;
 use App\Http\Controllers\OrderController;
 
 Route::post('/customer/order/store', [OrderController::class, 'store'])->name('customer.order.store');
@@ -29,14 +27,14 @@ Route::post('/daftar', [RegisterController::class, 'register']);
 Route::middleware(['auth:admin'])->prefix('admin')->group(function () {
     Route::get('/', [App\Http\Controllers\AdminTokoController::class, 'index'])->name('admin.dashboard');
 
-    Route::get('/edit', function () {
-        return view('admin_edit');
-    })->name('admin.edit');
+    Route::get('/toko/edit', [AdminEditController::class, 'showForm'])->name('admin.edit');
 
-    Route::get('/toko/{id}', function($id) {
-        return "Detail Toko ID: " . $id;
-    })->name('admin.toko.detail');
+    // Route to handle the form submission
+    Route::post('/toko/store', [AdminEditController::class, 'storeOrUpdate'])->name('admin.toko.store');
 
+    Route::get('/toko/{toko}', [AdminTokoController::class, 'showDetail'])->name('admin.toko.detail');
+    Route::get('/order/{order}', [AdminTokoController::class, 'showOrderDetail'])->name('admin.order.detail');
+    
     Route::delete('/toko/{id}', function($id) {
         \App\Models\Toko::findOrFail($id)->delete();
         return redirect()->route('admin.dashboard')->with('success', 'Toko berhasil dihapus.');
@@ -46,12 +44,7 @@ Route::middleware(['auth:admin'])->prefix('admin')->group(function () {
 
 // --- PROTECTED CASHIER ROUTES ---
 Route::middleware(['auth:cashier'])->prefix('cashier')->group(function () {
-    // This group ensures only a logged-in Cashier can access these URLs.
-    // The URL will look like: yoursite.com/cashier/...
-
-    Route::get('/', function () {
-        return view('cashier');
-    })->name('cashier.dashboard');
+    Route::get('/', [CashierDashboardController::class, 'index'])->name('cashier.dashboard');
 
     Route::get('/detail', function () {
         return view('cashier_detail');
@@ -60,6 +53,12 @@ Route::middleware(['auth:cashier'])->prefix('cashier')->group(function () {
     Route::get('/edit', function () {
         return view('cashier_edit');
     })->name('cashier.edit');
+
+    
+    Route::post('/order/{id}/approve', [OrderController::class, 'approve'])->name('order.approve');
+    Route::post('/order/{id}/cancel', [OrderController::class, 'cancel'])->name('order.cancel');
+    Route::post('/order/{id}/done', [OrderController::class, 'done'])->name('order.done');
+
 });
 
 
