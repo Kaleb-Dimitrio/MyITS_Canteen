@@ -42,15 +42,11 @@ class CashierMenuController extends Controller
             'gambar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        // *** UPDATED IMAGE HANDLING LOGIC ***
         $imagePathForDb = null;
         if ($request->hasFile('gambar')) {
             $file = $request->file('gambar');
-            // Get the original name of the file
             $originalFileName = $file->getClientOriginalName();
-            // Store the file in 'storage/app/public/image' using its original name
             $file->storeAs('image', $originalFileName, 'public');
-            // Set the path to be saved in the database
             $imagePathForDb = 'image/' . $originalFileName;
         }
 
