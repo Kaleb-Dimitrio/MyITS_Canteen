@@ -33,10 +33,9 @@ Route::middleware(['auth:admin'])->prefix('admin')->group(function () {
     // Route to handle the form submission
     Route::post('/toko/store', [AdminEditController::class, 'storeOrUpdate'])->name('admin.toko.store');
 
-    Route::get('/toko/{id}', function($id) {
-        return "Detail Toko ID: " . $id;
-    })->name('admin.toko.detail');
-
+    Route::get('/toko/{toko}', [AdminTokoController::class, 'showDetail'])->name('admin.toko.detail');
+    Route::get('/order/{order}', [AdminTokoController::class, 'showOrderDetail'])->name('admin.order.detail');
+    
     Route::delete('/toko/{id}', function($id) {
         \App\Models\Toko::findOrFail($id)->delete();
         return redirect()->route('admin.dashboard')->with('success', 'Toko berhasil dihapus.');
