@@ -3,6 +3,12 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\CustomerDashboardController;
+
+
+use App\Http\Controllers\OrderController;
+
+Route::post('/customer/order/store', [OrderController::class, 'store'])->name('customer.order.store');
 
 
 // The root URL of your website will show the login form.
@@ -20,19 +26,20 @@ Route::post('/daftar', [RegisterController::class, 'register']);
 
 // --- PROTECTED ADMIN ROUTES ---
 Route::middleware(['auth:admin'])->prefix('admin')->group(function () {
-    // This group ensures only a logged-in Admin can access these URLs.
-    // The URL will look like: yoursite.com/admin/...
+    Route::get('/', [App\Http\Controllers\AdminTokoController::class, 'index'])->name('admin.dashboard');
 
-    Route::get('/', function () {
-        return view('admin');
-    })->name('admin.dashboard');
-
-    // New route for editing admin-related content
     Route::get('/edit', function () {
         return view('admin_edit');
     })->name('admin.edit');
 
-    // Add other admin-only routes here.
+    Route::get('/toko/{id}', function($id) {
+        return "Detail Toko ID: " . $id;
+    })->name('admin.toko.detail');
+
+    Route::delete('/toko/{id}', function($id) {
+        \App\Models\Toko::findOrFail($id)->delete();
+        return redirect()->route('admin.dashboard')->with('success', 'Toko berhasil dihapus.');
+    })->name('admin.toko.delete');
 });
 
 
@@ -57,20 +64,15 @@ Route::middleware(['auth:cashier'])->prefix('cashier')->group(function () {
 
 // --- PROTECTED CUSTOMER ROUTES ---
 // This section is now updated to use the '/customer' prefix.
+
 Route::middleware(['auth:customer'])->prefix('customer')->group(function () {
+    Route::get('/', [CustomerDashboardController::class, 'index'])->name('customer.dashboard');
 
-    Route::get('/', function() {
-        return view('customer');
-    })->name('customer.dashboard');
+     // Tampilkan menu milik toko tertentu
+    Route::get('/menu/{toko}', [CustomerDashboardController::class, 'showMenu'])->name('customer.menu');
 
-    // New route for the customer's menu page
-    Route::get('/menu', function() {
-        return view('customer_menu');
-    })->name('customer.menu');
-
-    // New route for the customer's order page
     Route::get('/order', function() {
         return view('customer_order');
     })->name('customer.order');
-
 });
+

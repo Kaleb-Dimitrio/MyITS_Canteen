@@ -1,47 +1,60 @@
 body {
-  font-family: "Segoe UI", sans-serif;
+    font-family: "Segoe UI", sans-serif;
 }
 
 /* Mengambil gaya dari kode 1 */
 .table-container {
-  max-width: 700px;
-  margin: auto;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  margin-top: 30px;
+    max-width: 700px;
+    margin: auto;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
 }
 
 .table-header {
-  background-color: #159eeb;
-  font-weight: bold;
-  border-radius: 10px 10px 0 0;
+    background-color: #159eeb;
+    font-weight: bold;
+    border-radius: 10px 10px 0 0;
 }
 
 /* Form styling dari kode 2 */
 .form-label {
-  font-weight: 600;
-  color: #333;
+    font-weight: 600;
+    color: #333;
 }
 
 .form-control {
-  border: 2px solid #a73bc3 !important;
-  outline: none;
-  box-shadow: none;
+    border: 2px solid #a73bc3 !important;
+    outline: none;
+    box-shadow: none;
 }
 
 .form-control:focus {
-  border-color: #a73bc3 !important;
-  box-shadow: 0 0 0 0.2rem rgba(167, 59, 195, 0.25);
+    border-color: #a73bc3 !important;
+    box-shadow: 0 0 0 0.2rem rgba(167, 59, 195, 0.25);
 }
 
 .btn-primary {
-  background-color: #1f79db;
-  border: none;
-  font-weight: bold;
-  padding: 12px;
+    background-color: #1f79db;
+    border: none;
+    font-weight: bold;
+    padding: 12px;
 }
 
 .btn-primary:hover {
-  background-color: #165fb1;
+    background-color: #165fb1;
+}
+
+.header-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.edit-icon {
+    margin-top: 2rem; /* Sama tinggi dengan logo */
+    margin-right: 1rem; /* Jaga jarak dari sisi kanan */
+    margin-left: auto; /* Dorong ke kanan */
+    transform: translateX(-2rem); /* Geser ke kiri sebesar 2rem */
 }

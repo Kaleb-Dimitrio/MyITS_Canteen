@@ -11,14 +11,28 @@
       rel="stylesheet"
     />
 
+    <!-- Bootstrap Icons -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ asset('css/admin_edit.css') }}" />
   </head>
   <body class="bg-white">
-    <!-- Logo -->
-    <div class="text-left my-4" style="margin-left: 2rem">
-      <img src="image/logo-white.png" alt="MyITS Canteen" style="width: 80px" />
-    </div>
+<!-- Header Bar -->
+<div class="header-bar d-flex justify-content-between align-items-center px-4 pt-4">
+  <div class="logo-container">
+    <img src="{{ asset('image/logo-white.png') }}" alt="MyITS Canteen" style="width: 80px" />
+  </div>
+  <div class="edit-icon text-center">
+    <a href="{{ route('admin.dashboard') }}" class="text-decoration-none text-dark">
+      <i class="bi bi-house-door fs-2"></i>
+      <div style="font-weight: bold;">HOME</div>
+    </a>
+  </div>
+</div>
 
     <!-- Form Container -->
     <div class="table-container bg-white">

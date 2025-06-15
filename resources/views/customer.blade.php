@@ -28,7 +28,7 @@
       <img src="image/logo-white.png" alt="MyITS Canteen" style="width: 80px" />
 
       <!-- Text Tengah -->
-      <div class="header-center">Halo, User</div>
+      <div class="header-center">Halo, {{ $customer->customer_nama }}</div>
 
       <!-- Icon History & Logout -->
       <div class="header-icons">
@@ -44,98 +44,35 @@
     </div>
 
     <!-- Pencarian -->
-    <div class="container mb-3 mt-3">
-      <input
-        type="text"
-        class="form-control"
-        placeholder="Cari Toko"
-        aria-label="Cari Toko"
-      />
-    </div>
+<div class="container mb-3 mt-3">
+  <form method="GET" action="{{ route('customer.dashboard') }}">
+    <input
+      type="text"
+      name="search"
+      class="form-control"
+      placeholder="Cari Toko"
+      value="{{ request('search') }}"
+    />
+  </form>
+</div>
+
 
     <!-- Daftar Toko -->
     <div class="container mb-5">
       <h5 class="fw-bold">Toko</h5>
       <div class="row row-cols-2 row-cols-md-4 g-4">
-        <!-- Toko 1 -->
-        <div class="col">
-          <button class="toko-btn" onclick="window.location.href='#'">
-            <div class="card shadow-sm h-100">
-              <img
-                src="image/logo-white.png"
-                class="card-img-top"
-                alt="Ayam Goreng Pak Gembus"
-              />
-              <div class="card-body text-center">
-                <p class="card-text mb-0">Ayam Goreng Pak Gembus</p>
-              </div>
-            </div>
-          </button>
+        @foreach ($tokos as $toko)
+  <div class="col">
+    <button class="toko-btn" onclick="window.location.href='{{ route('customer.menu', ['toko' => $toko->toko_id]) }}'">
+      <div class="card shadow-sm h-100">
+        <img src="{{ asset('storage/' . $toko->toko_gambar) }}" class="card-img-top" alt="{{ $toko->toko_nama }}" />
+        <div class="card-body text-center">
+          <p class="card-text mb-0">{{ $toko->toko_nama }}</p>
         </div>
-
-        <!-- Toko 1 -->
-        <div class="col">
-          <button class="toko-btn" onclick="window.location.href='#'">
-            <div class="card shadow-sm h-100">
-              <img
-                src="image/logo-white.png"
-                class="card-img-top"
-                alt="Ayam Goreng Pak Gembus"
-              />
-              <div class="card-body text-center">
-                <p class="card-text mb-0">Ayam Goreng Pak Gembus</p>
-              </div>
-            </div>
-          </button>
-        </div>
-
-        <!-- Toko 1 -->
-        <div class="col">
-          <button class="toko-btn" onclick="window.location.href='#'">
-            <div class="card shadow-sm h-100">
-              <img
-                src="image/logo-white.png"
-                class="card-img-top"
-                alt="Ayam Goreng Pak Gembus"
-              />
-              <div class="card-body text-center">
-                <p class="card-text mb-0">Ayam Goreng Pak Gembus</p>
-              </div>
-            </div>
-          </button>
-        </div>
-
-        <!-- Toko 1 -->
-        <div class="col">
-          <button class="toko-btn" onclick="window.location.href='#'">
-            <div class="card shadow-sm h-100">
-              <img
-                src="image/logo-white.png"
-                class="card-img-top"
-                alt="Ayam Goreng Pak Gembus"
-              />
-              <div class="card-body text-center">
-                <p class="card-text mb-0">Ayam Goreng Pak Gembus</p>
-              </div>
-            </div>
-          </button>
-        </div>
-
-        <!-- Toko 1 -->
-        <div class="col">
-          <button class="toko-btn" onclick="window.location.href='#'">
-            <div class="card shadow-sm h-100">
-              <img
-                src="image/logo-white.png"
-                class="card-img-top"
-                alt="Ayam Goreng Pak Gembus"
-              />
-              <div class="card-body text-center">
-                <p class="card-text mb-0">Ayam Goreng Pak Gembus</p>
-              </div>
-            </div>
-          </button>
-        </div>
+      </div>
+    </button>
+  </div>
+@endforeach
 
         <!-- Tambahkan toko lainnya di sini -->
       </div>
