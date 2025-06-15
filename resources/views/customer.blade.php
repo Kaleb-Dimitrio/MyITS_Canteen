@@ -32,7 +32,7 @@
 
       <!-- Icon History & Logout -->
       <div class="header-icons">
-        <div class="icon-item" onclick="window.location.href='/history'">
+        <div class="icon-item" onclick="window.location.href='/customer/history'">
           <i class="bi bi-clock-history"></i>
           <span>History</span>
         </div>

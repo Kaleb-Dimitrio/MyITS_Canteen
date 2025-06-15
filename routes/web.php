@@ -78,5 +78,9 @@ Route::middleware(['auth:customer'])->prefix('customer')->group(function () {
     Route::get('/order', function() {
         return view('customer_order');
     })->name('customer.order');
+
+    Route::get('/history', [CustomerDashboardController::class, 'history'])->name('customer.history');
+
+
 });
 

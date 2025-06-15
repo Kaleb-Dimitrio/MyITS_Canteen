@@ -59,4 +59,15 @@ class CustomerDashboardController extends Controller
     ]);
 }
 
+public function history()
+{
+    $customer = auth()->user(); // pelanggan yang login
+    $orders = \App\Models\Order::where('customer_id', $customer->customer_id)
+                ->orderBy('order_tanggal', 'desc')
+                ->get();
+
+    return view('customer_history', compact('customer', 'orders'));
+}
+
+
 }
