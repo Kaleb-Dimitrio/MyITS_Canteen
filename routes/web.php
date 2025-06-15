@@ -7,6 +7,7 @@ use App\Http\Controllers\AdminEditController;
 use App\Http\Controllers\AdminTokoController;
 use App\Http\Controllers\CustomerDashboardController;
 use App\Http\Controllers\CashierDashboardController;
+use App\Http\Controllers\CashierMenuController;
 use App\Http\Controllers\OrderController;
 
 Route::post('/customer/order/store', [OrderController::class, 'store'])->name('customer.order.store');
@@ -52,9 +53,10 @@ Route::middleware(['auth:cashier'])->prefix('cashier')->group(function () {
         return view('cashier_detail');
     })->name('cashier.detail');
 
-    Route::get('/edit', function () {
-        return view('cashier_edit');
-    })->name('cashier.edit');
+    Route::get('/edit', [CashierMenuController::class, 'showEditForm'])->name('cashier.edit');
+    Route::post('/menu/store', [CashierMenuController::class, 'store'])->name('cashier.menu.store');
+    Route::put('/menu/update/{menu}', [CashierMenuController::class, 'update'])->name('cashier.menu.update');
+    Route::delete('/menu/delete/{menu}', [CashierMenuController::class, 'destroy'])->name('cashier.menu.destroy');
 
     
     Route::post('/order/{id}/approve', [OrderController::class, 'approve'])->name('order.approve');
