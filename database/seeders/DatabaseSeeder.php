@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
             AdminSeeder::class,
             TokoSeeder::class,
             CashierSeeder::class,
+            MenuSeeder::class,
         ]);
     }
 }
