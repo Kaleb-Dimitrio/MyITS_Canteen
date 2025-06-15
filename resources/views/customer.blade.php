@@ -37,11 +37,18 @@
           <span>History</span>
         </div>
         <div class="icon-item" onclick="window.location.href='/logout'">
+    
+          <form action="{{ route('logout') }}" method="POST" class="m-0">
+        @csrf
+        <button type="submit" class="btn btn-link text-dark text-decoration-none p-0 m-0">
           <i class="bi bi-box-arrow-left"></i>
+        </button>
+    </form>
           <span>Logout</span>
         </div>
       </div>
     </div>
+
 
     <!-- Pencarian -->
 <div class="container mb-3 mt-3">
