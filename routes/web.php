@@ -49,9 +49,7 @@ Route::middleware(['auth:admin'])->prefix('admin')->group(function () {
 Route::middleware(['auth:cashier'])->prefix('cashier')->group(function () {
     Route::get('/', [CashierDashboardController::class, 'index'])->name('cashier.dashboard');
 
-    Route::get('/detail', function () {
-        return view('cashier_detail');
-    })->name('cashier.detail');
+    Route::get('/order/{order}', [CashierDashboardController::class, 'showOrderDetail'])->name('cashier.order.detail');
 
     Route::get('/edit', [CashierMenuController::class, 'showEditForm'])->name('cashier.edit');
     Route::post('/menu/store', [CashierMenuController::class, 'store'])->name('cashier.menu.store');

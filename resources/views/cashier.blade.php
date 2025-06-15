@@ -63,7 +63,7 @@
                                 <tr id="order-row-{{ $order->order_id }}">
                                     <td>{{ $order->order_no_meja }}</td>
                                     <td class="harga">Rp. {{ number_format($order->order_total_harga, 0, ',', '.') }}</td>
-                                    <td><button class="btn btn-primary btn-sm">Lihat Detail</button></td>
+                                    <td><a href="{{ route('cashier.order.detail', $order->order_id) }}" class="btn btn-primary btn-sm">Lihat Detail</a></td>
                                     <td class="verifikasi-td">
                                         @if ($order->order_status_pesanan === 'Verifikasi Pembayaran')
                                             <button class="btn btn-danger btn-sm me-1 btn-cancel" data-id="{{ $order->order_id }}">
