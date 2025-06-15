@@ -20,6 +20,8 @@ return new class extends Migration
             // Additional attribute on the pivot table
             $table->integer('kuantitas'); // PDM: Menu_Order_Kuantitas
 
+            $table->timestamps(); // Timestamps for created_at and updated_at
+
             // Define the composite primary key
             $table->primary(['menu_id', 'order_id']);
         });
